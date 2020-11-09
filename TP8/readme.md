@@ -36,8 +36,8 @@ services:
 ```
 ## Deuxième partie
 Pour avoir sur le même graphique les opérations de lecture et d'écriture j'ai afficher le nombre de requete 'select' et 'insert' grace a l'opérateur "or"
-![screen1.png](/home/nawak/Documents/ynov/admin_bdd/supervision/screen1.png)
+![screen1.png](https://github.com/Lucasmouchague/admin-bdd/blob/main/TP8/screen1.png)
 Pour la seconde requête je n'ai pas compris votre demande d'afficher "la variation du taux d'opérations de lectures et d'écritures" j'ai donc afficher le nombre de requete "select" et "insert" dans un interval de temps de 5 minutes.
 
-![screen2.png](/home/nawak/Documents/ynov/admin_bdd/supervision/screen2.png)
+![screen2.png](https://github.com/Lucasmouchague/admin-bdd/blob/main/TP8/screen2.png)
 
