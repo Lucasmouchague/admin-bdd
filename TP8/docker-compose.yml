@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:latest
+    hostname: bdd
+    container_name: bdd
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mariadb:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+  
+  prometheus:
+    image: prom/prometheus:latest
+    hostname: prometheus
+    container_name: prometheus
+    depends_on:
+      - mysql-exporter
+    networks:
+      - backend
+    ports:
+      - 9090:9090
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  
+  mysql-exporter:
+    image: prom/mysqld-exporter:latest
+    hostname: mysql-exporter
+    container_name: mysql-exporter
+    networks:
+      - backend
+    depends_on:
+      - mariadb
+    environment:
+      DATA_SOURCE_NAME: "root:password@(mariadb:3306)/"
+networks:
+  backend:
