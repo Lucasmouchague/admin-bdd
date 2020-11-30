@@ -8,6 +8,6 @@ docker-compose up -d
 ```
 ## Partie 1
 
-![part1.png](/home/nawak/git/admin-bdd/TP9/screen/part1.png)
+![part1.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP9/screen/part1.png)
 ## Partie 2
-![part2.png](/home/nawak/git/admin-bdd/TP9/screen/part2.png)
+![part2.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP9/screen/part2.png)
