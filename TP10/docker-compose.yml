@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+
+  grafana:
+      image: grafana/grafana:latest
+      restart: always
+      ports:
+        - 3000:3000
+      networks:
+        - backend
+      volumes:
+        - grafana-volume:/var/lib/grafana
+        - ./datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+        - ./dashboard/TP1.json:/home/grafana/TP1.json
+        - ./config/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+        - ./config/grafana.ini:/etc/grafana/grafana.ini
+      environment:
+        - "GF_INSTALL_PLUGINS=agenty-flowcharting-panel"
+        - "GF_SECURITY_ADMIN_USER=ADMINgrafana"
+        - "GF_SECURITY_ADMIN_PASSWORD=ADMINgrafana"
+
+  mariadb:
+    image: mariadb:10.4
+    hostname: bdd
+    container_name: bdd
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sylius
+      MYSQL_USER: mydbuser
+      MYSQL_PASSWORD: toortoor
+    #volumes:
+      # - ./dump/sylius_dev.sql:/docker-entrypoint-initdb.d/sylius_dev.sql
+      # - ./mariadb:/var/lib/mysql
+      # - ./scripts:/docker-entrypoint-initdb.d
+  
+  prometheus:
+    image: prom/prometheus:latest
+    hostname: prometheus
+    container_name: prometheus
+    depends_on:
+      - mysql-exporter
+    networks:
+      - backend
+    # ports:
+    #   - 9090:9090
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  
+  mysql-exporter:
+    image: prom/mysqld-exporter:latest
+    hostname: mysql-exporter
+    container_name: mysql-exporter
+    networks:
+      - backend
+    depends_on:
+      - mariadb
+    environment:
+      DATA_SOURCE_NAME: "root:password@(mariadb:3306)/"
+networks:
+  backend:
+volumes:
+  grafana-volume:
