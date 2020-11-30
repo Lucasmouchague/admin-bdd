@@ -31,15 +31,15 @@ from_name = Grafana
 ```
 ## Configuration du canal d'alerte
 
-![part1.png](/home/nawak/git/admin-bdd/TP10/screen/part1.png)
+![part1.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP10/screen/part1.png)
 Ici je renseigne l'adresse mail a qui grafana va envoyer les alertes
 ## Configuration de l'alerte
 
-![part2.png](/home/nawak/git/admin-bdd/TP10/screen/part2.png)
+![part2.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP10/screen/part2.png)
 Ici je demande a grafana de m'envoyer une alerte si le nombre de connexion refusé après 5 minutes est supérieure a 10.
 ## Test de l'alerte
 
-![part3.png](/home/nawak/git/admin-bdd/TP10/screen/part3.png)
+![part3.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP10/screen/part3.png)
 On vois bien que grafana detecte l'alerte
-![part4.png](/home/nawak/git/admin-bdd/TP10/screen/part4.png)
+![part4.png](https://raw.githubusercontent.com/Lucasmouchague/admin-bdd/main/TP10/screen/part4.png)
 Et ici on vois le mail que j'ai reçu de grafana
